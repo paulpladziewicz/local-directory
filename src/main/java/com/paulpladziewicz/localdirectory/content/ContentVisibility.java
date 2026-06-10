@@ -1,6 +1,6 @@
 package com.paulpladziewicz.localdirectory.content;
 
 public enum ContentVisibility {
-    PUBLIC,
+    VISIBLE,
     RESTRICTED
 }

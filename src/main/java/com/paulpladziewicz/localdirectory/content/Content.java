@@ -10,15 +10,14 @@ import java.time.LocalDateTime;
 @Data
 @Document(collection = "content")
 public class Content {
-
     @Id
     private String id;
 
     private ContentType type;
 
-    private ContentStatus status;
+    private ContentStatus status = ContentStatus.ACTIVE;
 
-    private ContentVisibility visibility = ContentVisibility.RESTRICTED;
+    private ContentVisibility visibility = ContentVisibility.VISIBLE;
 
     private ContentDetail detail;
 
