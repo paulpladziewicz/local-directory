@@ -4,10 +4,9 @@ import com.paulpladziewicz.localdirectory.content.Content;
 import com.paulpladziewicz.localdirectory.content.ContentService;
 import com.paulpladziewicz.localdirectory.content.ContentType;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("events")
@@ -21,5 +20,10 @@ public class EventController {
     @PostMapping
     public Content create(@Valid @RequestBody EventDto dto) {
         return service.create(ContentType.EVENT, Event.from(dto));
+    }
+
+    @GetMapping
+    public Page<Content> getAll(Pageable pageable) {
+        return service.findByType(ContentType.EVENT, pageable);
     }
 }

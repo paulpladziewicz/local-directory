@@ -1,5 +1,7 @@
 package com.paulpladziewicz.localdirectory.content;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,5 +17,9 @@ public class ContentService {
         content.setType(type);
         content.setDetail(detail);
         return repository.save(content);
+    }
+
+    public Page<Content> findByType(ContentType type, Pageable pageable) {
+        return repository.findByTypeAndVisibility(type, ContentVisibility.VISIBLE, pageable);
     }
 }
